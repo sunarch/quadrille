@@ -15,7 +15,7 @@ import time
 
 # imports: project
 from libmonty_sim_cogol import version
-from libmonty_sim_cogol import cogol
+from libmonty_sim_cogol import cogol, network
 from libmonty_sim_cogol.cogol import Grid
 
 
@@ -63,6 +63,11 @@ def main() -> None:
                         action='store_true',
                         dest='add_glider')
 
+    parser.add_argument('--send-over-network', metavar='ADDR:PORT',
+                        help='Send data over the network to "address:port"',
+                        default=None,
+                        dest='network_address')
+
     args = parser.parse_args()
 
     if args.version:
@@ -74,12 +79,23 @@ def main() -> None:
     if args.add_glider:
         grid.add_glider()
 
+    network_iterator = None
+    if args.network_address is not None:
+        network_iterator = network.tcp_send(*args.network_address.split(':'))
+        next(network_iterator)
+
     while True:
         try:
             cogol.print_grid(grid)
+
+            if network_iterator is not None:
+                network_iterator.send(cogol.grid_to_color_bytes(grid))
+
             grid.advance()
 
             if grid.is_empty:
+                network_iterator.send(b'\x00')
+                network_iterator.send(None)
                 break
             else:
                 time.sleep(0.5)

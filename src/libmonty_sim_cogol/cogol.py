@@ -93,3 +93,11 @@ def print_grid(grid: Grid) -> None:
             print(f'{cell_display:>2}', end='')
         print('')
     print('-' * grid.width * 2)
+
+
+def grid_to_color_bytes(grid: Grid) -> bytes:
+    color_bytes = b''
+    for row in range(grid.height):
+        for col in range(grid.width):
+            color_bytes += b'\xFF\xFF\xFF' if grid.is_cell_alive(row, col) else b'\x00\x00\x00'
+    return color_bytes
