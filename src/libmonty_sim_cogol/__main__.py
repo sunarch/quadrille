@@ -11,9 +11,12 @@ import configparser
 import logging
 import logging.config
 import pkg_resources
+import time
 
 # imports: project
 from libmonty_sim_cogol import version
+from libmonty_sim_cogol import cogol
+from libmonty_sim_cogol.cogol import Grid
 
 
 def main() -> None:
@@ -37,14 +40,51 @@ def main() -> None:
 
     parser.add_argument('--version',
                         help='Display version',
-                        action='store_const', const=True, default=False,
+                        action='store_true',
                         dest='version')
+
+    parser.add_argument('--grid-height',
+                        help='Height of the grid',
+                        action='store', type=int, required=True,
+                        dest='grid_height')
+
+    parser.add_argument('--grid-width',
+                        help='Width of the grid',
+                        action='store', type=int, required=True,
+                        dest='grid_width')
+
+    parser.add_argument('--loopback',
+                        help='Connect the opposite edges',
+                        action='store_true',
+                        dest='loopback')
+
+    parser.add_argument('--add-glider',
+                        help='Add a glider to the initial state',
+                        action='store_true',
+                        dest='add_glider')
 
     args = parser.parse_args()
 
     if args.version:
         print(f'{version.PROGRAM_NAME} {version.__version__}')
         return
+
+    grid = Grid(height=args.grid_height, width=args.grid_width, is_loopback=args.loopback)
+
+    if args.add_glider:
+        grid.add_glider()
+
+    while True:
+        try:
+            cogol.print_grid(grid)
+            grid.advance()
+
+            if grid.is_empty:
+                break
+            else:
+                time.sleep(0.5)
+        except KeyboardInterrupt:
+            break
 
 
 if __name__ == '__main__':

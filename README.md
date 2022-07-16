@@ -3,6 +3,12 @@ libmonty - SIM - CoGoL
 
 Simulation - Conway's Game of Life
 
+### Credits
+
+- Thanks to `bethlenke` at [HSBP](https://hsbp.org) for describing
+  his C algorithm for grid advancement which was the starting point
+  of my own approach
+
 ### License
 
 [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/)
