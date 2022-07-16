@@ -6,6 +6,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 from dataclasses import dataclass, field
+import numpy as np
 
 
 @dataclass
@@ -15,10 +16,22 @@ class Grid:
     is_loopback: bool
     _alive_set: set[tuple[int, int]] = field(default_factory=set)
 
-    def add_glider(self) -> None:
-        self._alive_set = self._alive_set.union({
-            (1, 2), (2, 3), (3, 1), (3, 2), (3, 3)
-        })
+    def add_glider(self, x: int, y: int, rotations: int = 0) -> None:
+        glider = np.array([[0, 1, 0],
+                           [0, 0, 1],
+                           [1, 1, 1]],
+                          int)
+
+        glider = np.rot90(glider, rotations)
+
+        glider_alive_cells = set()
+
+        for row in range(3):
+            for col in range(3):
+                if glider[row][col] == 1:
+                    glider_alive_cells.add((x + row, y + col))
+
+        self._alive_set = self._alive_set.union(glider_alive_cells)
 
     def advance(self):
         new_set = set()

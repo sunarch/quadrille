@@ -77,7 +77,7 @@ def main() -> None:
     grid = Grid(height=args.grid_height, width=args.grid_width, is_loopback=args.loopback)
 
     if args.add_glider:
-        grid.add_glider()
+        grid.add_glider(1, 1)
 
     network_iterator = None
     if args.network_address is not None:
