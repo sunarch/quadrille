@@ -4,6 +4,14 @@ Square grid simulations
 
 - Conway's Game of Life
 
+## Installation
+
+Available on PyPI: [quadrille](https://pypi.org/project/quadrille/)
+
+```commandline
+pip install quadrille
+```
+
 ## Credits
 
 - Thanks to `bethlenke` at [HSBP](https://hsbp.org) for describing
