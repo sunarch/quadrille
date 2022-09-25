@@ -5,5 +5,6 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-import libmonty_sim_cogol.__main__
-libmonty_sim_cogol.__main__.main()
+PROGRAM_NAME = 'quadrille'
+
+__version__ = '0.1.0'

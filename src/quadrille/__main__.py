@@ -14,9 +14,9 @@ import pkg_resources
 import time
 
 # imports: project
-from libmonty_sim_cogol import version
-from libmonty_sim_cogol import cogol, network
-from libmonty_sim_cogol.cogol import Grid
+from quadrille import version
+from quadrille import cogol, network
+from quadrille.cogol import Grid
 
 
 def main() -> None:
@@ -105,5 +105,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-
-# -------------------------------------------------------------------- #

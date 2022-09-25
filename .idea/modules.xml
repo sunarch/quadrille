@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/libmonty-sim-cogol.iml" filepath="$PROJECT_DIR$/.idea/libmonty-sim-cogol.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/quadrille.iml" filepath="$PROJECT_DIR$/.idea/quadrille.iml" />
     </modules>
   </component>
 </project>

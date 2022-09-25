@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="LED panel size w/glider w/loopback over network" type="PythonConfigurationType" factoryName="Python">
-    <module name="libmonty-sim-cogol" />
+    <module name="quadrille" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>

@@ -1,15 +1,16 @@
-libmonty - SIM - CoGoL
-======================
+# quadrille
 
-Simulation - Conway's Game of Life
+Square grid simulations
 
-### Credits
+- Conway's Game of Life
+
+## Credits
 
 - Thanks to `bethlenke` at [HSBP](https://hsbp.org) for describing
-  his C algorithm for grid advancement which was the starting point
-  of my own approach
+  his C algorithm for grid advancement in a Conway implementation
+  which was the starting point of my own approach
 
-### License
+## License
 
 [Mozilla Public License 2.0](https://www.mozilla.org/en-US/MPL/2.0/)
 
