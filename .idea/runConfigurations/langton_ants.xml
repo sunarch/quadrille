@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="LED panel size w/glider w/loopback" type="PythonConfigurationType" factoryName="Python">
+  <configuration default="false" name="langton ants" type="PythonConfigurationType" factoryName="Python">
     <module name="quadrille" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
@@ -16,8 +16,8 @@
       <option name="region" />
       <option name="useCurrentConnection" value="false" />
     </EXTENSION>
-    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/libmonty_sim_cogol/__main__.py" />
-    <option name="PARAMETERS" value="--grid-height 18 --grid-width 12 --loopback --add-glider" />
+    <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/quadrille_lants/__main__.py" />
+    <option name="PARAMETERS" value="src/quadrille_lants/data/gamefile-3b.txt" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />
