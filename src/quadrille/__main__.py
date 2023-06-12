@@ -7,11 +7,12 @@
 
 # imports: library
 from argparse import ArgumentParser
-import configparser
-import logging
-import logging.config
-import pkg_resources
 import time
+
+# imports: dependencies
+from libmonty_logging.config.file_and_stream.v1 import config as logging_config
+import libmonty_logging.helper as logging_helper
+import libmonty_logging.message as logging_message
 
 # imports: project
 from quadrille import version
@@ -21,20 +22,11 @@ from quadrille.cogol import Grid
 
 def main() -> None:
 
-    logger_config_name = 'data/logger.ini'
+    logging_helper.apply_config(version.PROGRAM_NAME,
+                                version.__version__,
+                                logging_config)
 
-    if not pkg_resources.resource_exists(__name__, logger_config_name):
-        logging.error('logger config does not exist')
-        return
-
-    logger_config = pkg_resources.resource_stream(__name__, logger_config_name)
-    logger_config_str = logger_config.read().decode('UTF-8')
-    logger_config_parser = configparser.ConfigParser()
-    logger_config_parser.read_string(logger_config_str)
-    logging.config.fileConfig(logger_config_parser)
-
-    logging.info(version.PROGRAM_NAME)
-    logging.info('-' * len(version.PROGRAM_NAME))
+    logging_message.program_header(version.PROGRAM_NAME)
 
     parser = ArgumentParser(prog=version.PROGRAM_NAME)
 
